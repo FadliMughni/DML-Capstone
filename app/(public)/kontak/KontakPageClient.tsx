@@ -41,29 +41,30 @@ export function KontakPageClient({ userName, userEmail, session, cmsData }: Kont
     <div className="min-h-screen flex flex-col font-sans">
 
       {/* HERO BANNER */}
-      <div className="relative bg-blue-950 text-white overflow-hidden">
-        {/* Background Image */}
+      <div className="relative text-white overflow-hidden" style={{ background: 'linear-gradient(135deg, #0c1d50 0%, #0f2461 60%, #0c1d50 100%)' }}>
+        {/* Background Image subtle */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
           style={{ backgroundImage: `url('${cmsData.hero.backgroundImageUrl}')` }}
         ></div>
-        
-        {/* Overlay gradient for modern look */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/60 to-slate-900/40 mix-blend-multiply z-0"></div>
-        {/* Additional subtle gradient */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/50 to-transparent z-0"></div>
+        {/* Dot pattern overlay */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
+        {/* Red top accent bar */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-600"></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-900/60 border border-blue-800 text-blue-200 text-xs font-semibold uppercase tracking-wider mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-600/20 border border-red-500/40 text-red-200 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
             <Building2 className="w-4 h-4" /> {cmsData.hero.badgeText}
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
             {cmsData.hero.title}
           </h1>
-          <p className="text-sm sm:text-base text-blue-200 max-w-2xl leading-relaxed whitespace-pre-wrap">
+          <p className="text-sm sm:text-base text-blue-100/80 max-w-2xl leading-relaxed whitespace-pre-wrap">
             {cmsData.hero.subtitle}
           </p>
         </div>
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none"></div>
       </div>
 
       {/* MAIN CONTENT */}
@@ -211,13 +212,13 @@ export function KontakPageClient({ userName, userEmail, session, cmsData }: Kont
                 Informasi Kontak
               </h3>
               
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-950 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#0f2461] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-1">Alamat Pabrik / Kantor Pusat</h4>
+                    <h4 className="text-xs font-bold text-slate-900 mb-1 uppercase tracking-wide">Alamat Pabrik / Kantor Pusat</h4>
                     <p className="text-sm text-slate-600 leading-relaxed">
                       {cmsData.contactInfo.addressLine1}<br/>
                       {cmsData.contactInfo.addressLine2}<br/>
@@ -227,11 +228,11 @@ export function KontakPageClient({ userName, userEmail, session, cmsData }: Kont
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-950 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#0f2461] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-1">Telepon / WhatsApp</h4>
+                    <h4 className="text-xs font-bold text-slate-900 mb-1 uppercase tracking-wide">Telepon / WhatsApp</h4>
                     <p className="text-sm font-medium text-slate-600 mb-1">{cmsData.contactInfo.phoneOffice}</p>
                     <Link href="#" className="text-sm font-bold text-green-600 hover:text-green-700 transition-colors">
                       {cmsData.contactInfo.whatsapp}
@@ -240,11 +241,11 @@ export function KontakPageClient({ userName, userEmail, session, cmsData }: Kont
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-950 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#0f2461] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-1">Email Resmi</h4>
+                    <h4 className="text-xs font-bold text-slate-900 mb-1 uppercase tracking-wide">Email Resmi</h4>
                     <Link href={`mailto:${cmsData.contactInfo.email}`} className="text-sm font-medium text-slate-600 hover:text-blue-950 transition-colors">
                       {cmsData.contactInfo.email}
                     </Link>
@@ -252,11 +253,11 @@ export function KontakPageClient({ userName, userEmail, session, cmsData }: Kont
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-950 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#0f2461] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900 mb-1">Jam Operasional</h4>
+                    <h4 className="text-xs font-bold text-slate-900 mb-1 uppercase tracking-wide">Jam Operasional</h4>
                     <p className="text-sm text-slate-600">{cmsData.contactInfo.hoursWeekday}</p>
                     <p className="text-sm text-slate-600">{cmsData.contactInfo.hoursWeekend}</p>
                     {cmsData.contactInfo.hoursNote && (
